@@ -13,10 +13,12 @@ public class No {
         return chave;
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends No> T getEsquerda() {
         return (T) esquerda;
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends No> T getDireita() {
         return (T) direita;
     }
