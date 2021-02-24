@@ -1,0 +1,16 @@
+funcRec(2);
+- exec if
+- funcRec(2-1);
+    - exec if
+    - funcRec(1-1);
+        - exec if
+        - System.out 0
+        - funcRec(0-1);
+            - exec if
+            - System.out Acabou
+            - return
+        -return
+    - System.out 1
+    -return
+- System.out 2
+- return
