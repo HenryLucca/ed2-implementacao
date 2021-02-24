@@ -56,7 +56,7 @@ public class BinaryTreePrinter <T extends No> {
 
     }
 
-    public void print(PrintStream os) {
+    public void imprimir(PrintStream os) {
         os.print(traversePreOrder(tree.raiz));
     }
 

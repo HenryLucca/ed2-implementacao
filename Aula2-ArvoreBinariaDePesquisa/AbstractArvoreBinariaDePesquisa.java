@@ -4,8 +4,7 @@ import java.util.LinkedList;
 public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
     protected T raiz;
 	
-	// find the node with the minimum key
-	public T minimum(T node) {
+	public T minimo(T node) {
 		while (node.esquerda != null) {
 			node = node.getEsquerda();
 		}
@@ -21,60 +20,42 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
         else return 1 + Math.max(altura(node.esquerda), altura(node.direita));
     }
 
-	public void preOrder() {
-		preOrder(this.raiz);
-	}
-	
-	private void preOrder(T node) {
-		if (node != null) {
-			System.out.println(node.getChave());
-			preOrder(node.getEsquerda());
-			preOrder(node.getDireita());
-		}
-	}
-
-	public void inOrder() {
-		inOrder(this.raiz);
-	}
-	
-	public void imprimir() {
-		Deque<T> queue = new LinkedList<T>();
-			
-		if (!isEmpty()) {
-			queue.addLast(this.raiz);
-			while (!queue.isEmpty()) {
-				T current = queue.removeFirst();
-					
-				System.out.println(current.getChave());
-					
-				if(current.esquerda != null) 
-					queue.addLast(current.getEsquerda());
-				if(current.direita != null) 
-					queue.addLast(current.getDireita());   
-			}
-		}
-	}
-
-	private boolean isEmpty() {
+	private boolean estaVazia() {
 		return raiz == null;
 	}
 
-	private void inOrder(T node) {
+	public void preOrdem() {
+		preOrdem(this.raiz);
+	}
+	
+	private void preOrdem(T node) {
 		if (node != null) {
-			inOrder(node.getEsquerda());
 			System.out.println(node.getChave());
-			inOrder(node.getDireita());
+			preOrdem(node.getEsquerda());
+			preOrdem(node.getDireita());
 		}
 	}
 
-	public void posOrder() {
-		posOrder(this.raiz);
+	public void emOrdem() {
+		emOrdem(this.raiz);
+	}
+
+	private void emOrdem(T node) {
+		if (node != null) {
+			emOrdem(node.getEsquerda());
+			System.out.println(node.getChave());
+			emOrdem(node.getDireita());
+		}
+	}
+
+	public void posOrdem() {
+		posOrdem(this.raiz);
 	}
 	
-	private void posOrder(T node) {
+	private void posOrdem(T node) {
 		if (node != null) {
-			posOrder(node.getEsquerda());
-			posOrder(node.getDireita());
+			posOrdem(node.getEsquerda());
+			posOrdem(node.getDireita());
 			System.out.println(node.getChave());
 		}
 	}
@@ -91,19 +72,19 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
 	}
 
 	protected T deletarNoHelper(T node, int key) {
-		// search the key
+		// Procurando a Chave
 		if (node == null) return node;
 		else if (key < node.getChave()) node.esquerda = deletarNoHelper(node.getEsquerda(), key);
 		else if (key > node.getChave()) node.direita = deletarNoHelper(node.getDireita(), key);
 		else {
-			// the key has been found, now delete it
+			// A chave foi encontrada, e agora deve ser deletada
 
-			// case 1: node is a leaf node
+			// case 1: O node eh folha
 			if (node.esquerda == null && node.direita == null) {
 				node = null;
 			}
 
-			// case 2: node has only one child
+			// case 2: O No tem só um filho
 			else if (node.esquerda == null) {
 				node = node.getDireita();
 			}
@@ -112,9 +93,9 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
 				node = node.getEsquerda();
 			}
 
-			// case 3: has both children
+			// case 3: Tem ambos os filhos
 			else {
-				T temp = minimum(node.getDireita());
+				T temp = minimo(node.getDireita());// Minimo da direita
 				node.setChave(temp.getChave());
 				node.direita = deletarNoHelper(node.getDireita(), temp.getChave());
 			}
@@ -124,7 +105,7 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
 	}
 
     protected T inserirNoHelper(No atual, int chave) {
-        T node = newNode(chave);
+        T node = novoNode(chave);
 		node.setChave(chave);
 
 		No folhaCorreta = null;
@@ -152,7 +133,25 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
         return node;
     }
 
-    public abstract T newNode(int key);
+	public void imprimir() {
+		Deque<T> queue = new LinkedList<T>();
+			
+		if (!estaVazia()) {
+			queue.addLast(this.raiz);
+			while (!queue.isEmpty()) {
+				T current = queue.removeFirst();
+					
+				System.out.println(current.getChave());
+					
+				if(current.esquerda != null) 
+					queue.addLast(current.getEsquerda());
+				if(current.direita != null) 
+					queue.addLast(current.getDireita());   
+			}
+		}
+	}
+
+    public abstract T novoNode(int key);
 	public abstract T inserir(int key);
 	public abstract T procurar(int key);
 	public abstract T deletar(int key);

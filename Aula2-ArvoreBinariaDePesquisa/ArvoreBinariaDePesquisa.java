@@ -1,6 +1,6 @@
 public class ArvoreBinariaDePesquisa extends AbstractArvoreBinariaDePesquisa<No> {
     @Override
-    public No newNode(int key) {
+    public No novoNode(int key) {
         return new No(key);
     }
 
@@ -34,6 +34,6 @@ public class ArvoreBinariaDePesquisa extends AbstractArvoreBinariaDePesquisa<No>
         a.inserir(74);
         
         BinaryTreePrinter<No> p = new BinaryTreePrinter<No>(a);
-        p.print(System.out);
+        p.imprimir(System.out);
     }
 }
