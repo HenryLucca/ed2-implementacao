@@ -6,7 +6,24 @@ public class ArvoreBinariaDePesquisa extends AbstractArvoreBinariaDePesquisa<No>
 
     @Override
     public No inserir(int key) {
-        return inserirNoHelper(raiz, key);
+        No n =  inserirNoHelper(raiz, key);
+        verificaBalanceia(n);
+        //alteração
+        return n;
+    }
+
+    private void verificaBalanceia(No n) {
+        // recalcula o fator de balanceamento n
+        //if (n.fator > 1){
+        //    if (n.direita.fator < -1){
+                // rotacaoDireita (n.direita);
+        //    }
+        //  rotacaoEsquerda(n);
+        //}
+        // vejo os outros casos
+        if (n != raiz){
+            verificaBalanceia(n.pai);
+        }
     }
 
     @Override
@@ -16,7 +33,9 @@ public class ArvoreBinariaDePesquisa extends AbstractArvoreBinariaDePesquisa<No>
 
     @Override
     public No deletar(int key) {
-        return deletarNoHelper(raiz, key);
+        No n =  inserirNoHelper(raiz, key);
+        //alteracao
+        return n;
     }
 
     public static void main(String[] args) {
