@@ -11,13 +11,6 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
 		return node;
 	}
 
-	public T maximo(T node) {
-		while (node.direita != null) {
-			node = node.getDireita();
-		}
-		return node;
-	}
-
 	public int altura() {
         return altura(this.raiz);
     }
