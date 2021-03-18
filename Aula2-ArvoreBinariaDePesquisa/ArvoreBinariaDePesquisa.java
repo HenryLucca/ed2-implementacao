@@ -51,6 +51,7 @@ public class ArvoreBinariaDePesquisa extends AbstractArvoreBinariaDePesquisa<No>
         a.inserir(26);
         a.inserir(69);
         a.inserir(74);
+        a.inserir(5);
         
         BinaryTreePrinter<No> p = new BinaryTreePrinter<No>(a);
         p.imprimir(System.out);
