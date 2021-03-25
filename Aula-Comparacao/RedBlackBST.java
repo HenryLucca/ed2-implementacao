@@ -39,6 +39,15 @@ public class RedBlackBST {
     printTree(node.right);
   }
 
+  public boolean findNode(int value) {
+    Node n = new Node (value);
+    n = findNode(root, n);
+    if (n == null){
+      return false;
+    }
+    return true;
+  }
+  
   private Node findNode(Node findNode, Node node) {
     if (root == nil) {
       return null;
