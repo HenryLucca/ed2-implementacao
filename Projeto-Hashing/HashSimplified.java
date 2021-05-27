@@ -1,5 +1,3 @@
-import java.util.Map;
-
 public interface HashSimplified {
 
     int size();

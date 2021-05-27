@@ -30,6 +30,7 @@ public class HashByDivision implements HashSimplified{
     public void put(int key) {
         int index = hash(key);
         espaco[index] = key;
+        counter++;
     }
     
 }
