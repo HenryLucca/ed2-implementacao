@@ -1,3 +1,4 @@
+package base;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -113,7 +114,7 @@ public abstract class AbstractArvoreBinariaDePesquisa<T extends No> {
 
     protected T inserirNoHelper(No atual, int chave) {
         T node = novoNode(chave);
-		node.setChave(chave);
+		//node.setChave(chave);
 
 		No folhaCorreta = null;
 		//No atual = this.raiz;

@@ -1,3 +1,4 @@
+package br.unicap.ed2.base;
 import java.io.PrintStream;
 
 //Código adaptado de https://github.com/eugenp/tutorials
