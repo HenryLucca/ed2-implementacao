@@ -1,24 +1,24 @@
-package br.unicap.ed2.avl;
+package br.unicap.ed2.pv;
 
 import br.unicap.ed2.base.AbstractArvoreBinariaDePesquisa;
 
-public class ArvoreAVL extends AbstractArvoreBinariaDePesquisa<NoAVL> {
+public class ArvorePV extends AbstractArvoreBinariaDePesquisa<NoPV> {
 
     @Override
-    public NoAVL novoNode(int key) {
+    public NoPV novoNode(int key) {
         //Altera
-        return new NoAVL(key);
+        return new NoPV(key);
     }
 
     @Override
-    public NoAVL inserir(int key) {
-        NoAVL n = inserirNoHelper(raiz, key);
+    public NoPV inserir(int key) {
+        NoPV n = inserirNoHelper(raiz, key);
         //Altera
         return n;
     }
 
     @Override
-    public NoAVL procurar(int key) {
+    public NoPV procurar(int key) {
         return procurarNoHelper(raiz, key);
     }
 
